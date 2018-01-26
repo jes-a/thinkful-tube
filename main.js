@@ -14,11 +14,11 @@ function getDataFromApi(searchTerm, callback) {
 function renderResult(result) {
 	return `<div class="search-result">
 			<a href="https://www.youtube.com/watch?v=${result.id.videoId}" target="_blank">
-				<img src="${result.snippet.thumbnails.default.url}" alt="video thumbnail for ${result.snippet.title}" class="thumbnail">
+				<img src="${result.snippet.thumbnails.medium.url}" alt="video thumbnail for ${result.snippet.title}" class="thumbnail">
 				<h3 class="js-result-name">${result.snippet.title}</h3>
 			</a>
 			<p class="js-description">${result.snippet.description}</p>
-			<p class="view-more-channel"><a href="https://www.youtube.com/channel/${result.snippet.channelId}" target="_blank">See more from this channel</a></p>
+			<p class="view-more-channel"><a href="https://www.youtube.com/channel/${result.snippet.channelId}" target="_blank">More from ${result.snippet.channelTitle} &gt;</a></p>
 		</div>`;
 }
 
