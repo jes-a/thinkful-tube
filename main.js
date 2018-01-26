@@ -5,27 +5,27 @@ function getDataFromApi(searchTerm, callback) {
 		'q': `${searchTerm}`, 
 		'type': '',
 		'part': 'snippet', 
-		'key': 'AIzaSyAgRpUKp-ldnYPEuORywRdnFQN9o2HmirM'
+		'key': 'AIzaSyAgRpUKp-ldnYPEuORywRdnFQN9o2HmirM', 
+		'maxResults': '10',
 	}
 	$.getJSON(YOUTUBE_SEARCH_URL, query, callback);
 };
 
 function renderResult(result) {
-	return `
-		<div>
+	return `<div class="search-result">
 			<a href="https://www.youtube.com/watch?v=${result.id.videoId}" target="_blank">
 				<img src="${result.snippet.thumbnails.default.url}" alt="video thumbnail for ${result.snippet.title}" class="thumbnail">
 				<h3 class="js-result-name">${result.snippet.title}</h3>
 			</a>
 			<p class="js-description">${result.snippet.description}</p>
-		</div>
-	`;
+			<p class="view-more-channel"><a href="https://www.youtube.com/channel/${result.snippet.channelId}" target="_blank">See more from this channel</a></p>
+		</div>`;
 }
 
 function displayYoutubeSearchData(data) {
-	const results = data.items.map((item, index) => 
-		renderResult(item));
-	$('.js-search-results').html("<h2>Search Results</h2>" + results);
+	const results = data.items.forEach((item, index) => {
+		let result = renderResult(item);
+		$('.js-search-results').append(result)});
 };
 
 function handleSubmit() {
@@ -38,9 +38,9 @@ function handleSubmit() {
 			$('.js-search-results').html("<h2>Please enter a search term</h2>")
 		} else {
 		getDataFromApi(query, displayYoutubeSearchData);
+		$('.results-header').show();
 		}
 	});
 }
-
 
 $(handleSubmit);
