@@ -11,6 +11,7 @@ function getDataFromApi(searchTerm, callback) {
 	$.getJSON(YOUTUBE_SEARCH_URL, query, callback);
 };
 
+
 function renderResult(result) {
 	return `<div class="search-result">
 			<a href="https://www.youtube.com/watch?v=${result.id.videoId}" target="_blank">
