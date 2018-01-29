@@ -52,6 +52,13 @@ h2 {
 	display: none;
 }
 
+#js-number-results {
+	font-size: 15px;
+	font-weight: 100;
+	margin-bottom: 10px;
+	color: #555;
+}
+
 h3 {
 	font-size:  20px;
 	margin-top:  10px;

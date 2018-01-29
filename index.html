@@ -12,7 +12,7 @@
   	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"> 
 </head>
 <body>
-	<main>
+	<main role="main">
 	<header><h1>Search YouTube Videos</h1></header>
 	<section class="js-search-form">
 		<form role="form">
@@ -21,9 +21,9 @@
 		</form>
 	</section>
 
-	<section class="js-search-results">
-		<h2 class="results-header">Search Results</h2>
-		<div class="number-of-results"></div>
+	<section class="js-search-results" aria-live="assertive">
+		<h2 class="results-header" aria-label="Search results">Search Results</h2>
+		<div id="js-number-results"></div>
 	</section>
 	</main>
 <script src="main.js"></script>
