@@ -26,7 +26,10 @@ function renderResult(result) {
 function displayYoutubeSearchData(data) {
 	const results = data.items.forEach((item, index) => {
 		let result = renderResult(item);
-		$('.js-search-results').append(result)});
+		$('.js-search-results').append(result);
+	});
+	const pageResults = data.pageInfo.resultsPerPage;
+	$('#js-number-results').html(`Results displayed: ${pageResults}`);
 };
 
 function handleSubmit() {
